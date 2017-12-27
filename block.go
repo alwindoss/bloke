@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/sha256"
+	"fmt"
 	"log"
 	"strconv"
 	"time"
@@ -25,13 +26,16 @@ func NewBlock(index, timestamp, data, previousHash string) (Block, error) {
 	hasher.Write([]byte(index))
 	hasher.Write([]byte(timestamp))
 	hasher.Write([]byte(data))
-	h := hasher.Sum([]byte(previousHash))
+	hasher.Write([]byte(previousHash))
+	h := hasher.Sum(nil)
+	hStr := fmt.Sprintf("%x", h)
+	fmt.Println(fmt.Sprintf("%x", h))
 	return Block{
 		Index:        index,
 		Timestamp:    timestamp,
 		Data:         data,
 		PreviousHash: previousHash,
-		Hash:         string(h),
+		Hash:         hStr,
 	}, nil
 }
 
