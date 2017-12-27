@@ -7,13 +7,16 @@ import (
 	"time"
 )
 
+var blockChain []*Block
+var index int
+
 // Block holds the datastructure of the blockchain
 type Block struct {
-	Index        string
-	Timestamp    string
-	Data         string
-	PreviousHash string
-	Hash         string
+	Index        string `json:"index"`
+	Timestamp    string `json:"time_stamp"`
+	Data         string `json:"data"`
+	PreviousHash string `json:"previous_hash"`
+	Hash         string `json:"hash"`
 }
 
 // NewBlock is the factory to create a new block
