@@ -1,0 +1,5 @@
+bloke
+*.exe
+
+.vscode/
+vendor/
